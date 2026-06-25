@@ -10,7 +10,7 @@ module keypad_encoder(
     
     reg [5: 0] state, next_state;
     
-   // One-hot encoding
+
     parameter S_0 = 6'b000001, S_1 = 6'b000010, S_2 = 6'b000100;
     parameter S_3 = 6'b001000, S_4 = 6'b010000, S_5 = 6'b100000;
     assign Valid = ((state == S_1) || (state == S_2) || (state == S_3) || (state == S_4)) && Row;
@@ -40,17 +40,17 @@ module keypad_encoder(
     always@ (state or S_Row or Row)     
     begin next_state = state; Col = 0;
     case (state)
-        //Assert all columns
+        
         S_0: begin Col = 15; if (S_Row) next_state =S_1; end
-        //Assert column 0
+        
         S_1: begin Col = 1; if (Row) next_state = S_5; else next_state = S_2; end
-        //Assert column 1
+        
         S_2: begin Col = 2; if (Row) next_state = S_5; else next_state = S_3; end
-        // Assert column 2
+        
         S_3: begin Col = 4; if (Row) next_state = S_5; else next_state= S_4; end
-       // Assert column 3
+       
         S_4: begin Col = 8; if (Row) next_state = S_5; else next_state = S_0; end
-        // Assert all rows
+        
         S_5: begin Col = 15; if (Row ==0) next_state = S_0; end
     endcase
     end

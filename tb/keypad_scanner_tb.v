@@ -28,13 +28,13 @@ module keypad_scanner_tb ();
     parameter  [39: 0] None = "None";
     integer        j, k;
     always @(Key) 
-    begin                                                   // "one-hot" code for pressed key
+    begin                                                   
     case (Key)
         16'h0000: Pressed = None;
-        16'h0001: Pressed = Key_0;              //Key = 0000 0000 0000 0001
-        16'h0002: Pressed = Key_1;              //Key = 0000 0000 0000 0010
-        16'h0004: Pressed = Key_2;              //Key = 0000 0000 0000 0100
-        16'h0008: Pressed = Key_3;              //Key = 0000 0000 0000 1000
+        16'h0001: Pressed = Key_0;             
+        16'h0002: Pressed = Key_1;             
+        16'h0004: Pressed = Key_2;              
+        16'h0008: Pressed = Key_3;              
         16'h0010: Pressed = Key_4;
         16'h0020: Pressed = Key_5;
         16'h0040: Pressed = Key_6;
