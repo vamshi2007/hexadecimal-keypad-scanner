@@ -1,0 +1,10 @@
+# Simulation output
+*.vcd
+keypad_sim
+
+# Editor files
+*.swp
+*~
+
+# Logs
+*.log
